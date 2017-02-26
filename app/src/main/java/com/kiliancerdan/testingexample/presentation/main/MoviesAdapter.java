@@ -1,4 +1,4 @@
-package com.kiliancerdan.testingexample.presentation;
+package com.kiliancerdan.testingexample.presentation.main;
 
 
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kiliancerdan.testingexample.R;
-import com.kiliancerdan.testingexample.presentation.entity.movie.MovieView;
+import com.kiliancerdan.testingexample.entity.movie.MovieView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -18,9 +18,11 @@ import java.util.List;
 class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ItemViewHolder> {
 
     private final List<MovieView> movies;
+    private View.OnClickListener listener;
 
-    public MoviesAdapter() {
+    public MoviesAdapter(View.OnClickListener listener) {
         this.movies = new ArrayList<>();
+        this.listener = listener;
     }
 
     public void setMovies(List<MovieView> movies) {
@@ -32,12 +34,14 @@ class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ItemViewHolder> {
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_item, parent, false);
+        view.setOnClickListener(listener);
         return new ItemViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
         MovieView movieView = movies.get(position);
+        holder.setId(movieView.getId());
         holder.setImage(movieView.getPosterUrl());
         holder.setTitle(movieView.getTitle());
         holder.setDescription(movieView.getOverview());
@@ -59,6 +63,10 @@ class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ItemViewHolder> {
             image = (ImageView)itemView.findViewById(R.id.image_item);
             title = (TextView) itemView.findViewById(R.id.title_item);
             description = (TextView) itemView.findViewById(R.id.description_item);
+        }
+
+        void setId(String id) {
+            itemView.setTag(id);
         }
 
         void setImage(String url) {

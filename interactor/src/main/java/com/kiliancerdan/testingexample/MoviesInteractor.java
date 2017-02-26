@@ -16,9 +16,9 @@ import retrofit2.Retrofit;
 public class MoviesInteractor implements Callback<MoviesResponse> {
 
     private TheMovieDBService service;
-    private MovieCallback callback;
+    private MoviesCallback callback;
 
-    public MoviesInteractor(MovieCallback callback) {
+    public MoviesInteractor(MoviesCallback callback) {
         Retrofit retrofit = RetrofitMovies.getRetrofit();
         service = retrofit.create(TheMovieDBService.class);
         this.callback = callback;
@@ -43,7 +43,7 @@ public class MoviesInteractor implements Callback<MoviesResponse> {
         callback.providesMoviesFailure();
     }
 
-    public interface MovieCallback {
+    public interface MoviesCallback {
         void providesMovies(List<Movie> movies);
         void providesMoviesFailure();
     }

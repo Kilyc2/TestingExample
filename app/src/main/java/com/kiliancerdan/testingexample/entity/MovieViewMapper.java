@@ -1,7 +1,7 @@
-package com.kiliancerdan.testingexample.presentation.entity;
+package com.kiliancerdan.testingexample.entity;
 
 import com.kiliancerdan.testingexample.entity.movie.Movie;
-import com.kiliancerdan.testingexample.presentation.entity.movie.MovieView;
+import com.kiliancerdan.testingexample.entity.movie.MovieView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class MovieViewMapper {
     }
 
     public static MovieView convertMovieToView(Movie movie) {
-        return new MovieView(movie.getId(),
+        return new MovieView(String.valueOf(movie.getId()),
                 movie.getTitle(),
                 movie.getOverview(),
                 movie.getPosterUrl());

@@ -1,13 +1,13 @@
-package com.kiliancerdan.testingexample.presentation;
+package com.kiliancerdan.testingexample.presentation.main;
 
 import com.kiliancerdan.testingexample.MoviesInteractor;
 import com.kiliancerdan.testingexample.entity.movie.Movie;
-import com.kiliancerdan.testingexample.presentation.entity.MovieViewMapper;
-import com.kiliancerdan.testingexample.presentation.entity.movie.MovieView;
+import com.kiliancerdan.testingexample.entity.MovieViewMapper;
+import com.kiliancerdan.testingexample.entity.movie.MovieView;
 
 import java.util.List;
 
-class MainPresenter implements MoviesInteractor.MovieCallback {
+class MainPresenter implements MoviesInteractor.MoviesCallback {
 
     private MainView view;
     private MoviesInteractor moviesInteractor;

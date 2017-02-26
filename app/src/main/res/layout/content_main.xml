@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.kiliancerdan.testingexample.presentation.MainActivity"
+    tools:context=".presentation.main.MainActivity"
     tools:showIn="@layout/activity_main">
 
     <android.support.v7.widget.RecyclerView

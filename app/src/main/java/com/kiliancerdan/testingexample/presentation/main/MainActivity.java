@@ -1,5 +1,6 @@
-package com.kiliancerdan.testingexample.presentation;
+package com.kiliancerdan.testingexample.presentation.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.kiliancerdan.testingexample.R;
-import com.kiliancerdan.testingexample.presentation.entity.movie.MovieView;
+import com.kiliancerdan.testingexample.entity.movie.MovieView;
+import com.kiliancerdan.testingexample.presentation.detail.DetailActivity;
 
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Mai
     private MoviesAdapter adapter;
     private MainPresenter presenter;
 
-    private Toolbar toolbar;
+    public Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +35,9 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Mai
         fabPopularMovies.setOnClickListener(this);
         fabTopMovies.setOnClickListener(this);
 
-        adapter = new MoviesAdapter();
+        adapter = new MoviesAdapter(this);
         recyclerView.setAdapter(adapter);
+        recyclerView.setOnClickListener(this);
 
         presenter = new MainPresenter(this);
     }
@@ -51,6 +54,11 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Mai
                 title = getString(R.string.top_movies_title);
                 presenter.getTopMovies();
                 break;
+            default:
+                Intent intent = new Intent(this, DetailActivity.class);
+                intent.putExtra(DetailActivity.MOVIE_ID, (String)v.getTag());
+                startActivity(intent);
+
         }
         toolbar.setTitle(title);
     }

@@ -21,6 +21,6 @@ public class MovieMapper {
         return new Movie(response.getId(),
                 response.getTitle(),
                 response.getOverview(),
-                "http://image.tmdb.org/t/p/w500/".concat(response.getPosterUrl()));
+                response.getPosterUrl());
     }
 }
