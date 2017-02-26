@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Testing Example App</string>
+    <string name="popular_movies_title">Popular Movies</string>
+    <string name="top_movies_title">Top Rated Movies</string>
+</resources>
